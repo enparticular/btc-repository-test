@@ -63,7 +63,11 @@ function ConfirmationScreen({
 			<div className={styles.confirmationContainer}>
 				<div className={styles.confirmationContent}>
 					<div className={styles.iconContainer}>
-						<FaCheckCircle size={60} className={styles.successIcon} />
+						<FaCheckCircle
+							key={animationStage}
+							size={60}
+							className={styles.successIcon}
+						/>
 					</div>
 
 					<h2 className={styles.title}>Transaction Complete</h2>

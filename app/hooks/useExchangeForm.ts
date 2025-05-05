@@ -4,7 +4,7 @@ import { useBitcoinPrice } from "./useBitcoinPrice";
 // Constants for limits
 export const MAX_BTC_AMOUNT = 100000; // 100,000 BTC
 export const MAX_USD_AMOUNT = 940000000; // $940 million
-export const BTC_MAX_CHARS = 8; // Max 8 digits for BTC
+export const BTC_MAX_CHARS = 6; // Max 6 digits for BTC
 export const USD_MAX_CHARS = 10; // Max 10 digits for USD
 export const BTC_DECIMALS = 8;
 export const USD_DECIMALS = 2;

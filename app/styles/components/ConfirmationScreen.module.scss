@@ -58,8 +58,8 @@
 		animation: slideUp 0.5s ease-out forwards;
 	}
 	.iconContainer {
-		animation: fadeInUp 0.3s ease-out 0.2s forwards;
 		opacity: 0;
+		animation: fadeInUp 0.3s ease-out 0.2s forwards;
 	}
 
 	.title {
@@ -121,7 +121,11 @@
 }
 
 .successIcon {
+	opacity: 0;
 	color: #fff;
+	transform: scale(0);
+	animation: checkGrow 0.4s ease-out 0.3s forwards;
+	transform-origin: center;
 }
 
 .title {
@@ -271,6 +275,21 @@
 	100% {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+
+@keyframes checkGrow {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+	70% {
+		transform: scale(1.2);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
 	}
 }
 

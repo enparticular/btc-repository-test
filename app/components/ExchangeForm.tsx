@@ -56,7 +56,7 @@ function ExchangeForm() {
 					<FormattedNumberInput
 						value={inputValue}
 						onChange={handlers.inputChange}
-						placeholder="50,000"
+						placeholder={isBuying ? "$0" : "0.00BTC"}
 						maxDecimals={limits.maxDecimals}
 						maxValue={isBuying ? MAX_USD_AMOUNT : MAX_BTC_AMOUNT}
 						maxChars={limits.maxChars}
@@ -76,7 +76,7 @@ function ExchangeForm() {
 					<FormattedNumberInput
 						value={outputValue}
 						onChange={handlers.outputChange}
-						placeholder={isBuying ? "0.00000000" : "0.00"}
+						placeholder={isBuying ? "0.00BTC" : "$0"}
 						maxDecimals={limits.receiveMaxDecimals}
 						maxValue={isBuying ? MAX_BTC_AMOUNT : MAX_USD_AMOUNT}
 						maxChars={limits.receiveMaxChars}
@@ -86,16 +86,6 @@ function ExchangeForm() {
 
 				{/* Error message */}
 				{error && <div className={styles.errorMessage}>{error}</div>}
-
-				{/* Max amount alert */}
-				{exceedsMaxAmount && (
-					<p className={styles.maxAmountAlert}>
-						Amount exceeds the maximum limit of{" "}
-						{isBuying
-							? `$${MAX_USD_AMOUNT.toLocaleString()}`
-							: `${MAX_BTC_AMOUNT.toLocaleString()} BTC`}
-					</p>
-				)}
 
 				{/* CTA Button */}
 				<div className={buttonstyles.ctaButtonContainer}>
@@ -109,6 +99,16 @@ function ExchangeForm() {
 							: `SELL ${inputValue || "0"} BTC NOW`}
 					</button>
 				</div>
+
+				{/* Max amount alert */}
+				{exceedsMaxAmount && (
+					<p className={styles.maxAmountAlert}>
+						Amount exceeds the maximum limit of{" "}
+						{isBuying
+							? `$${MAX_USD_AMOUNT.toLocaleString()}`
+							: `${MAX_BTC_AMOUNT.toLocaleString()} BTC`}
+					</p>
+				)}
 
 				{/* Price display */}
 				<p className={styles.currentPriceParagraph}>
