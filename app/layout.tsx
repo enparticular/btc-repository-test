@@ -4,7 +4,8 @@ import "./styles/bootstrap-overrides.scss";
 import styles from "./styles/components/Main.module.scss";
 
 import type { Metadata } from "next";
-import Logo from "../public/logo.svg";
+import Logo from "../public/logo.png";
+import Image from "next/image";
 
 export const metadata: Metadata = {
 	title: "USD <> BTC Exchange",
@@ -20,12 +21,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body>
 				<div className={styles.header}>
-					<Logo
-						className={styles.logo}
-						width={200}
-						height={60}
-						aria-label="Xapo Logo"
-					/>
+					<Image src={Logo} alt="Logo" className={styles.logo} width={150} />
 				</div>
 				{children}
 			</body>

@@ -33,7 +33,7 @@ function ExchangeForm() {
 	}, []);
 
 	if (loading) {
-		return <div className="text-center">Loading exchange rates...</div>;
+		return <div className={styles.loading}>Loading exchange rates...</div>;
 	}
 
 	if (priceError) {
@@ -46,12 +46,30 @@ function ExchangeForm() {
 				onSubmit={handlers.submit}
 				className={`${styles.container} ${animate ? styles.animated : ""}`}
 			>
-				<h1 className={styles.title}>Buy or Sell BTC now</h1>
+				<h1 className={styles.title}>Buy or Sell BTC Instantly</h1>
+				<p className={styles.subtitle}>
+					{isBuying
+						? "Buy Bitcoin  at the current market rate."
+						: "Sell Bitcoin  at the current market rate."}
+				</p>
+				{/* Price display */}
+				<p className={styles.currentPriceParagraph}>
+					(Current BTC price:{" "}
+					<span className={styles.currentPriceNumber}>
+						{price
+							? price.toLocaleString("en-US", {
+									style: "currency",
+									currency: "USD",
+							  })
+							: "N/A"}
+					</span>
+					)
+				</p>
 
 				{/* Input section */}
 				<div className={styles.inputGroup}>
 					<label className={styles.label}>
-						{isBuying ? "YOU PAY (in USD)" : "YOU PAY (in BTC)"}
+						{isBuying ? "You pay (in USD)" : "You pay (in BTC)"}
 					</label>
 					<FormattedNumberInput
 						value={inputValue}
@@ -71,7 +89,7 @@ function ExchangeForm() {
 				{/* Output section */}
 				<div className={`${styles.inputGroup} ${styles.inputGroupReceive}`}>
 					<label className={styles.label}>
-						{isBuying ? "YOU RECEIVE (in BTC)" : "YOU RECEIVE (in USD)"}
+						{isBuying ? "You receive (in BTC)" : "You receive (in USD)"}
 					</label>
 					<FormattedNumberInput
 						value={outputValue}
@@ -109,19 +127,6 @@ function ExchangeForm() {
 							: `${MAX_BTC_AMOUNT.toLocaleString()} BTC`}
 					</p>
 				)}
-
-				{/* Price display */}
-				<p className={styles.currentPriceParagraph}>
-					Current BTC price:{" "}
-					<span className={styles.currentPriceNumber}>
-						{price
-							? price.toLocaleString("en-US", {
-									style: "currency",
-									currency: "USD",
-							  })
-							: "N/A"}
-					</span>
-				</p>
 			</form>
 
 			<ConfirmationScreen
