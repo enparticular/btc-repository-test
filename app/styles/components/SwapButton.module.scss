@@ -1,0 +1,25 @@
+.swapButtonContainer {
+	display: flex;
+	justify-content: center;
+	margin: -1rem 0 1rem;
+	button {
+		border-radius: 99999px;
+		height: 45px;
+		width: 45px;
+		padding: 8px;
+		transition: background-color 0.3s ease-in-out, border 0.3s ease-in-out;
+		&:hover {
+			background-color: var(--cta-color);
+			border: 1px solid var(--cta-color);
+		}
+	}
+}
+
+.iconWrapper {
+	display: inline-block;
+	transition: transform 0.3s ease-in-out;
+}
+
+.rotated {
+	transform: rotate(180deg);
+}

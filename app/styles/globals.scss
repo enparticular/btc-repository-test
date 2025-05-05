@@ -1,0 +1,34 @@
+@import "bootstrap/scss/bootstrap";
+
+:root {
+	// font sizes
+	--font-size-sm: 0.875rem; /* 14px */
+	--font-size-base: 1rem; /* 16px */
+	--font-size-lg: 1.125rem; /* 18px */
+	--font-size-xl: 1.25rem; /* 20px */
+	--font-size-xxl: 2.75rem; /* 44px */
+	// borders
+	--border-radius: 4px;
+	// colors
+	--background-dark: #1a1a1a;
+	--container-dark: #101010;
+	--border-color: #666;
+	--muted: #666;
+	--less-muted: #aaa;
+	--cta-color-highlighted: #d45c28;
+	--cta-color: #c34813;
+	--number-color: #ffffae;
+}
+
+body {
+	background-color: var(--background-dark);
+	font-family: Helvetica, sans-serif;
+	color: #fff;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}

@@ -1,0 +1,34 @@
+.input {
+	width: 100%;
+	text-align: center;
+	background-color: inherit;
+	border: none;
+	border-radius: var(--border-radius);
+	color: var(--number-color);
+	font-size: clamp(var(--font-size-sm), 7vw, var(--font-size-xxl));
+	transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
+	font-weight: bold;
+	&::placeholder {
+		color: var(--muted);
+		opacity: 1; /* Ensures the placeholder is visible */
+	}
+	&:focus,
+	&:focus-visible {
+		outline: none;
+		box-shadow: none;
+		border: none;
+		color: #fff !important;
+		transform: scale(1.1);
+	}
+
+	/* Additional selector to target WebKit browsers */
+	&:focus-within {
+		outline: none;
+		border: none;
+	}
+
+	/* Fix for older browsers */
+	&:-moz-focusring {
+		outline: none;
+	}
+}

@@ -1,0 +1,43 @@
+// Modal overrides
+.modal-content {
+	border: 1px solid var(--border-color) !important;
+	border-radius: var(--border-radius) !important;
+	background-color: var(--container-dark) !important;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+}
+
+.modal-header {
+	border-bottom: none !important;
+	padding: 1rem 1.5rem 0.75rem !important;
+}
+
+.modal-title {
+	font-weight: bold !important;
+	font-size: var(--font-size-xl) !important;
+	text-transform: uppercase !important;
+	text-align: center !important;
+	width: 100% !important;
+	color: #fff;
+}
+
+.modal-body {
+	padding: 1rem 1.5rem !important;
+	color: #fff;
+	text-align: center;
+}
+
+.modal-footer {
+	border-top: none !important;
+	padding: 0 1.5rem 1.5rem !important;
+	justify-content: center !important;
+}
+
+// Button overrides
+.btn-primary {
+	background-color: var(--cta-color) !important;
+	border: none !important;
+	text-transform: uppercase;
+	font-weight: bold !important;
+	font-size: var(--font-size-sm) !important;
+	padding: 0.75rem 1.5rem !important;
+}

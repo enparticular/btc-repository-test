@@ -1,0 +1,286 @@
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	overflow: hidden;
+	transition: opacity 0.5s ease;
+}
+
+.flashLayer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--cta-color, #f15a22);
+	z-index: -1;
+}
+
+.hidden {
+	opacity: 0;
+	pointer-events: none;
+
+	.confirmationContainer {
+		transform: translateY(100%);
+	}
+
+	.flashLayer {
+		transform: translateY(100%);
+	}
+}
+
+.flash {
+	opacity: 1;
+
+	.flashLayer {
+		animation: flashIn 0.6s ease-out forwards;
+	}
+
+	.confirmationContainer {
+		opacity: 0;
+	}
+}
+
+.content {
+	opacity: 1;
+
+	.flashLayer {
+		transform: translateY(0);
+	}
+
+	.confirmationContainer {
+		animation: slideUp 0.5s ease-out forwards;
+	}
+	.iconContainer {
+		animation: fadeInUp 0.3s ease-out 0.2s forwards;
+		opacity: 0;
+	}
+
+	.title {
+		animation: fadeInUp 0.3s ease-out 0.4s forwards;
+		opacity: 0;
+	}
+
+	.details {
+		animation: fadeInUp 0.3s ease-out 0.6s forwards;
+		opacity: 0;
+	}
+
+	.doneButton {
+		animation: fadeInUp 0.3s ease-out 0.8s forwards;
+		opacity: 0;
+	}
+}
+
+.exit {
+	.flashLayer {
+		animation: flashOut 0.3s ease-in forwards;
+	}
+
+	.confirmationContainer {
+		animation: fadeOut 0.4s ease-in forwards;
+	}
+}
+
+.confirmationContainer {
+	background-color: #ae3b09;
+	border-radius: var(--border-radius);
+	color: #fff !important ;
+	width: 90vw;
+	margin: 1rem auto 0;
+	opacity: 1;
+	transform: translateY(0);
+	overflow: hidden;
+	z-index: 2;
+	@media (min-width: 768px) {
+		padding: 2rem;
+		width: 600px;
+	}
+}
+
+.confirmationContent {
+	text-align: center;
+}
+
+.iconContainer {
+	width: 80px;
+	height: 80px;
+	margin: 0 auto 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgb(255 116 9 / 30%);
+	border-radius: 50%;
+}
+
+.successIcon {
+	color: #fff;
+}
+
+.title {
+	font-size: var(--font-size-xl);
+	letter-spacing: 2px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: var(--number-color);
+}
+
+.details {
+	text-align: left;
+	border-radius: var(--border-radius);
+	margin-bottom: 1rem;
+	h3 {
+		font-size: var(--font-size-lg);
+		text-align: center;
+	}
+
+	.description {
+		text-align: center;
+		margin-bottom: 1.5rem;
+	}
+}
+
+.transactionDetails {
+	padding: 1.5rem;
+	background-color: rgba(0, 0, 0, 0.2);
+	font-size: var(--font-size-sm);
+	h4 {
+		display: flex;
+		align-items: center;
+		font-weight: bold;
+		text-transform: uppercase;
+		font-size: var(--font-size-base);
+		margin-bottom: 0;
+	}
+	p {
+		margin-bottom: 0;
+	}
+	.bitcoinIcon {
+		margin-right: 0.5rem;
+	}
+}
+
+.highlight {
+	font-weight: bold;
+}
+
+.doneButton {
+	width: 95%;
+	margin: 0 auto;
+	display: block;
+	background: #000;
+	text-transform: uppercase;
+	color: white;
+	border: none;
+	border-radius: var(--border-radius);
+	padding: 0.5rem;
+	font-weight: bold;
+	font-size: var(--font-size-base);
+	cursor: pointer;
+	transition: transform 0.1s ease-in-out, background-color 0.1s ease-in-out;
+	position: relative;
+	overflow: hidden;
+	/* Shine effect */
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 50%;
+		height: 100%;
+		background: linear-gradient(
+			to right,
+			rgba(255, 255, 255, 0) 0%,
+			rgba(255, 255, 255, 0.3) 50%,
+			rgba(255, 255, 255, 0) 100%
+		);
+		transform: skewX(-25deg);
+		opacity: 0;
+		pointer-events: none;
+	}
+	&:hover {
+		background-color: #111;
+		transform: scale(1.03);
+
+		&:before {
+			opacity: 1;
+			animation: shine 0.9s ease-out;
+		}
+	}
+
+	&:active {
+		transform: translateY(1px);
+	}
+	@media (min-width: 768px) {
+		padding: 1rem 1.5rem;
+		width: auto;
+	}
+}
+
+@keyframes flashIn {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes flashOut {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(100%);
+	}
+}
+
+@keyframes slideUp {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+}
+
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes shine {
+	0% {
+		left: -100%;
+		opacity: 0.7;
+	}
+	100% {
+		left: 150%;
+		opacity: 0.7;
+	}
+}

@@ -1,0 +1,129 @@
+.container {
+	width: 90vw;
+	background-color: var(--container-dark);
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	padding: 1.5rem;
+	margin-top: 1rem;
+	@media (min-width: 768px) {
+		padding: 2rem;
+		width: 600px;
+	}
+}
+.title {
+	text-align: center;
+	margin-bottom: 2rem;
+	text-transform: uppercase;
+	font-size: var(--font-size-lg);
+	font-weight: bold;
+}
+
+.inputGroup {
+	margin-bottom: 1.5rem;
+}
+
+.label {
+	text-align: center;
+	display: block;
+	font-weight: normal;
+	@media (min-width: 768px) {
+		margin-bottom: -0.75rem;
+	}
+}
+
+.currentPriceParagraph {
+	text-transform: uppercase;
+	color: var(--muted);
+	font-size: var(--font-size-sm);
+	margin: 1rem 0 0;
+	text-align: center;
+	display: block;
+}
+.currentPriceNumber {
+	color: var(--less-muted);
+}
+
+.errorMessage {
+	color: red;
+	margin-top: 0.5rem;
+}
+
+.formattedInputContainer {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.inputPrefix {
+	position: absolute;
+	left: 1rem;
+	color: #888;
+	font-size: var(--font-size-lg);
+}
+
+.fadeInElement {
+	opacity: 0;
+	animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animated {
+	.title {
+		animation: fadeIn 0.5s ease-out forwards;
+		animation-delay: 0.1s;
+		opacity: 0;
+	}
+
+	// First input group (YOU PAY)
+	.inputGroup:first-of-type {
+		animation: fadeIn 0.5s ease-out forwards;
+		animation-delay: 0.2s;
+		opacity: 0;
+	}
+
+	// Swap button wrapper
+	.swapButtonContainer {
+		animation: fadeIn 0.5s ease-out forwards;
+		animation-delay: 0.3s;
+		opacity: 0;
+	}
+
+	// Second input group (YOU RECEIVE)
+	.inputGroupReceive {
+		animation: fadeIn 0.5s ease-out forwards;
+		animation-delay: 0.4s;
+		opacity: 0;
+	}
+
+	// Button container - make sure this targets your actual button container class
+	.ctaButtonContainer {
+		animation: fadeIn 0.5s ease-out forwards;
+		animation-delay: 0.5s;
+		opacity: 0;
+	}
+
+	// If the button is directly in the form without a container
+	button[type="submit"] {
+		animation: fadeIn 0.5s ease-out forwards;
+		animation-delay: 0.6s;
+		opacity: 0;
+	}
+
+	.currentPriceParagraph {
+		animation: fadeIn 0.5s ease-out forwards;
+		animation-delay: 0.7s;
+		opacity: 0;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
