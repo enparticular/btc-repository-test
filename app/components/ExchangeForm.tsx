@@ -1,18 +1,29 @@
 import React, { useState, useEffect } from "react";
-
 import styles from "../styles/components/ExchangeForm.module.scss";
 import buttonstyles from "../styles/components/Button.module.scss";
 
 import SwapButton from "./SwapButton";
 import FormattedNumberInput from "./FormattedNumberInput";
 import ConfirmationScreen from "./ConfirmationScreen";
-import { useExchangeForm } from "../hooks/useExchangeForm";
+import {
+	useExchangeForm,
+	MAX_BTC_AMOUNT,
+	MAX_USD_AMOUNT,
+} from "../hooks/useExchangeForm";
 
 function ExchangeForm() {
-	const { form, bitcoin, handlers, isSubmitDisabled } = useExchangeForm();
+	const { form, bitcoin, handlers, isSubmitDisabled, limits } =
+		useExchangeForm();
 	const [animate, setAnimate] = useState(false);
 
-	const { inputValue, outputValue, isBuying, error, showModal } = form;
+	const {
+		inputValue,
+		outputValue,
+		isBuying,
+		error,
+		showModal,
+		exceedsMaxAmount,
+	} = form;
 	const { price, loading, error: priceError } = bitcoin;
 
 	useEffect(() => {
@@ -46,6 +57,10 @@ function ExchangeForm() {
 						value={inputValue}
 						onChange={handlers.inputChange}
 						placeholder="50,000"
+						maxDecimals={limits.maxDecimals}
+						maxValue={isBuying ? MAX_USD_AMOUNT : MAX_BTC_AMOUNT}
+						maxChars={limits.maxChars}
+						onExceedMaxValue={handlers.handleExceedMax}
 					/>
 				</div>
 
@@ -61,12 +76,26 @@ function ExchangeForm() {
 					<FormattedNumberInput
 						value={outputValue}
 						onChange={handlers.outputChange}
-						placeholder="0.52 BTC"
+						placeholder={isBuying ? "0.00000000" : "0.00"}
+						maxDecimals={limits.receiveMaxDecimals}
+						maxValue={isBuying ? MAX_BTC_AMOUNT : MAX_USD_AMOUNT}
+						maxChars={limits.receiveMaxChars}
+						onExceedMaxValue={handlers.handleExceedMax}
 					/>
 				</div>
 
 				{/* Error message */}
 				{error && <div className={styles.errorMessage}>{error}</div>}
+
+				{/* Max amount alert */}
+				{exceedsMaxAmount && (
+					<p className={styles.maxAmountAlert}>
+						Amount exceeds the maximum limit of{" "}
+						{isBuying
+							? `$${MAX_USD_AMOUNT.toLocaleString()}`
+							: `${MAX_BTC_AMOUNT.toLocaleString()} BTC`}
+					</p>
+				)}
 
 				{/* CTA Button */}
 				<div className={buttonstyles.ctaButtonContainer}>

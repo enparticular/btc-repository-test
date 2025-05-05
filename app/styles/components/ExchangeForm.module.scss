@@ -117,6 +117,14 @@
 	}
 }
 
+.maxAmountAlert {
+	color: #ff4d4f; // Red color for alert
+	font-size: 0.9rem;
+	margin-top: 0.5rem;
+	text-align: center;
+	animation: fadeIn 0.3s ease;
+}
+
 @keyframes fadeIn {
 	from {
 		opacity: 0;
