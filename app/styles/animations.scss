@@ -1,0 +1,154 @@
+// Common animations for reuse across components
+
+// Basic fade in animation
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+// Fade in with slight movement
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Fade out animation
+@keyframes fadeOut {
+	0% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	100% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+}
+
+// Slide up animation
+@keyframes slideUp {
+	0% {
+		opacity: 0;
+		transform: translateY(50px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+// Flash animations for overlay
+@keyframes flashIn {
+	0% {
+		transform: translateY(100%);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+@keyframes flashOut {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(100%);
+	}
+}
+
+// Check mark growth animation
+@keyframes checkGrow {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+	70% {
+		transform: scale(1.2);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+// Shine effect animation for buttons
+@keyframes shine {
+	0% {
+		left: -100%;
+		opacity: 0.7;
+	}
+	100% {
+		left: 150%;
+		opacity: 0.7;
+	}
+}
+
+// Rotation animations
+@keyframes rotate180 {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(180deg);
+	}
+}
+
+@keyframes rotateBack {
+	from {
+		transform: rotate(180deg);
+	}
+	to {
+		transform: rotate(0deg);
+	}
+}
+
+// Classes that can be extended
+.fadeIn {
+	animation: fadeIn 0.5s ease-out forwards;
+	opacity: 0;
+}
+
+.fadeInUp {
+	animation: fadeInUp 0.3s ease-out forwards;
+	opacity: 0;
+}
+
+.fadeOut {
+	animation: fadeOut 0.4s ease-in forwards;
+}
+
+.slideUp {
+	animation: slideUp 0.5s ease-out forwards;
+}
+
+.flashIn {
+	animation: flashIn 0.6s ease-out forwards;
+}
+
+.flashOut {
+	animation: flashOut 0.3s ease-in forwards;
+}
+
+.checkGrow {
+	animation: checkGrow 0.4s ease-out forwards;
+	opacity: 0;
+	transform: scale(0);
+}
+
+.rotate180 {
+	animation: rotate180 0.3s ease-in-out forwards;
+}
+
+.rotateBack {
+	animation: rotateBack 0.3s ease-in-out forwards;
+}

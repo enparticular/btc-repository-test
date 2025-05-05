@@ -1,3 +1,5 @@
+@import "../animations.scss";
+
 .container {
 	width: 90vw;
 	background-color: var(--container-dark);
@@ -67,8 +69,7 @@
 }
 
 .fadeInElement {
-	opacity: 0;
-	animation: fadeIn 0.5s ease-out forwards;
+	@extend .fadeIn;
 }
 
 .loading {
@@ -79,71 +80,53 @@
 	color: var(--muted);
 }
 
-.animated {
-	.title,
-	.subtitle {
-		animation: fadeIn 0.5s ease-out forwards;
-		animation-delay: 0.1s;
-		opacity: 0;
-	}
-
-	.currentPriceParagraph {
-		animation: fadeIn 0.5s ease-out forwards;
-		animation-delay: 0.2s;
-		opacity: 0;
-	}
-
-	// First input group (YOU PAY)
-	.inputGroup:first-of-type {
-		animation: fadeIn 0.5s ease-out forwards;
-		animation-delay: 0.3s;
-		opacity: 0;
-	}
-
-	// Swap button wrapper
-	.swapButtonContainer {
-		animation: fadeIn 0.5s ease-out forwards;
-		animation-delay: 0.4s;
-		opacity: 0;
-	}
-
-	// Second input group (YOU RECEIVE)
-	.inputGroupReceive {
-		animation: fadeIn 0.5s ease-out forwards;
-		animation-delay: 0.5s;
-		opacity: 0;
-	}
-
-	// Button container - make sure this targets your actual button container class
-	.ctaButtonContainer {
-		animation: fadeIn 0.5s ease-out forwards;
-		animation-delay: 0.6s;
-		opacity: 0;
-	}
-
-	// If the button is directly in the form without a container
-	button[type="submit"] {
-		animation: fadeIn 0.5s ease-out forwards;
-		animation-delay: 0.6s;
-		opacity: 0;
-	}
-}
-
 .maxAmountAlert {
 	color: #ff4d4f; // Red color for alert
 	font-size: var(--font-size-sm);
 	margin-top: 0.5rem;
 	text-align: center;
-	animation: fadeIn 0.3s ease;
+	@extend .fadeIn;
 }
 
-@keyframes fadeIn {
-	from {
+.animated {
+	.title,
+	.subtitle {
+		@extend .fadeIn;
+		animation-delay: 0.1s;
 		opacity: 0;
-		transform: translateY(10px);
 	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
+
+	.currentPriceParagraph {
+		@extend .fadeIn;
+		animation-delay: 0.2s;
+	}
+
+	// First input group (YOU PAY)
+	.inputGroup:first-of-type {
+		@extend .fadeIn;
+		animation-delay: 0.3s;
+	}
+
+	// Swap button wrapper
+	.swapButtonContainer {
+		@extend .fadeIn;
+		animation-delay: 0.4s;
+	}
+
+	// Second input group (YOU RECEIVE)
+	.inputGroupReceive {
+		@extend .fadeIn;
+		animation-delay: 0.5s;
+	}
+
+	.ctaButtonContainer {
+		@extend .fadeIn;
+		animation-delay: 0.6s;
+	}
+
+	// If the button is directly in the form without a container
+	button[type="submit"] {
+		@extend .fadeIn;
+		animation-delay: 0.6s;
 	}
 }

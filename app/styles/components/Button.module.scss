@@ -1,3 +1,5 @@
+@import "../animations.scss";
+
 .ctaButtonContainer {
 	width: 100%;
 	margin: -0.5rem auto 0;
@@ -9,14 +11,13 @@
 }
 
 .ctaButton {
-	width: 95%;
 	margin: 0 auto;
 	display: block;
 	background-color: var(--cta-color);
 	color: white;
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
-	padding: 0.5rem;
+	padding: 0.5rem 1.5rem;
 	border: none;
 	border-radius: var(--border-radius);
 	cursor: pointer;
@@ -66,16 +67,5 @@
 			opacity: 1;
 			animation: shine 0.9s ease-out;
 		}
-	}
-}
-
-@keyframes shine {
-	0% {
-		left: -100%;
-		opacity: 0.7;
-	}
-	100% {
-		left: 150%;
-		opacity: 0.7;
 	}
 }
